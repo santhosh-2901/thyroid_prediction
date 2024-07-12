@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thyroid Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Thyroid Prediction</h1>
+        <p>Please fill out the form below to get your thyroid prediction result.</p>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tsh">TSH:</label>
+                <input type="number" step="0.01" id="tsh" name="tsh">
+            </div>
+            <div class="form-group">
+                <label for="t3">T3:</label>
+                <input type="number" step="0.01" id="t3" name="t3">
+            </div>
+            <div class="form-group">
+                <label for="tt4">TT4:</label>
+                <input type="number" step="0.01" id="tt4" name="tt4">
+            </div>
+            <div class="form-group">
+                <label for="t4u">T4U:</label>
+                <input type="number" step="0.01" id="t4u" name="t4u">
+            </div>
+            <div class="form-group">
+                <label for="fti">FTI:</label>
+                <input type="number" step="0.01" id="fti" name="fti">
+            </div>
+            <div class="form-group">
+                <label>On Thyroxine:</label>
+                <div>
+                    <input type="radio" id="on_thyroxine_yes" name="on_thyroxine" value="yes" required>
+                    <label for="on_thyroxine_yes">Yes</label>
+                    <input type="radio" id="on_thyroxine_no" name="on_thyroxine" value="no" required>
+                    <label for="on_thyroxine_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Query On Thyroxine:</label>
+                <div>
+                    <input type="radio" id="query_on_thyroxine_yes" name="query_on_thyroxine" value="yes" required>
+                    <label for="query_on_thyroxine_yes">Yes</label>
+                    <input type="radio" id="query_on_thyroxine_no" name="query_on_thyroxine" value="no" required>
+                    <label for="query_on_thyroxine_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>On Antithyroid Medication:</label>
+                <div>
+                    <input type="radio" id="on_antithyroid_medication_yes" name="on_antithyroid_medication" value="yes" required>
+                    <label for="on_antithyroid_medication_yes">Yes</label>
+                    <input type="radio" id="on_antithyroid_medication_no" name="on_antithyroid_medication" value="no" required>
+                    <label for="on_antithyroid_medication_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Pregnant:</label>
+                <div>
+                    <input type="radio" id="pregnant_yes" name="pregnant" value="yes" required>
+                    <label for="pregnant_yes">Yes</label>
+                    <input type="radio" id="pregnant_no" name="pregnant" value="no" required>
+                    <label for="pregnant_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Thyroid Surgery:</label>
+                <div>
+                    <input type="radio" id="thyroid_surgery_yes" name="thyroid_surgery" value="yes" required>
+                    <label for="thyroid_surgery_yes">Yes</label>
+                    <input type="radio" id="thyroid_surgery_no" name="thyroid_surgery" value="no" required>
+                    <label for="thyroid_surgery_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Query Hypothyroid:</label>
+                <div>
+                    <input type="radio" id="query_hypothyroid_yes" name="query_hypothyroid" value="yes" required>
+                    <label for="query_hypothyroid_yes">Yes</label>
+                    <input type="radio" id="query_hypothyroid_no" name="query_hypothyroid" value="no" required>
+                    <label for="query_hypothyroid_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Query Hyperthyroid:</label>
+                <div>
+                    <input type="radio" id="query_hyperthyroid_yes" name="query_hyperthyroid" value="yes" required>
+                    <label for="query_hyperthyroid_yes">Yes</label>
+                    <input type="radio" id="query_hyperthyroid_no" name="query_hyperthyroid" value="no" required>
+                    <label for="query_hyperthyroid_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Lithium:</label>
+                <div>
+                    <input type="radio" id="lithium_yes" name="lithium" value="yes" required>
+                    <label for="lithium_yes">Yes</label>
+                    <input type="radio" id="lithium_no" name="lithium" value="no" required>
+                    <label for="lithium_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Goitre:</label>
+                <div>
+                    <input type="radio" id="goitre_yes" name="goitre" value="yes" required>
+                    <label for="goitre_yes">Yes</label>
+                    <input type="radio" id="goitre_no" name="goitre" value="no" required>
+                    <label for="goitre_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Tumor:</label>
+                <div>
+                    <input type="radio" id="tumor_yes" name="tumor" value="yes" required>
+                    <label for="tumor_yes">Yes</label>
+                    <input type="radio" id="tumor_no" name="tumor" value="no" required>
+                    <label for="tumor_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Hypopituitary:</label>
+                <div>
+                    <input type="radio" id="hypopituitary_yes" name="hypopituitary" value="yes" required>
+                    <label for="hypopituitary_yes">Yes</label>
+                    <input type="radio" id="hypopituitary_no" name="hypopituitary" value="no" required>
+                    <label for="hypopituitary_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Psych:</label>
+                <div>
+                    <input type="radio" id="psych_yes" name="psych" value="yes" required>
+                    <label for="psych_yes">Yes</label>
+                    <input type="radio" id="psych_no" name="psych" value="no" required>
+                    <label for="psych_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>TSH Measured:</label>
+                <div>
+                    <input type="radio" id="tsh_measured_yes" name="tsh_measured" value="yes" required>
+                    <label for="tsh_measured_yes">Yes</label>
+                    <input type="radio" id="tsh_measured_no" name="tsh_measured" value="no" required>
+                    <label for="tsh_measured_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>T3 Measured:</label>
+                <div>
+                    <input type="radio" id="t3_measured_yes" name="t3_measured" value="yes" required>
+                    <label for="t3_measured_yes">Yes</label>
+                    <input type="radio" id="t3_measured_no" name="t3_measured" value="no" required>
+                    <label for="t3_measured_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>TT4 Measured:</label>
+                <div>
+                    <input type="radio" id="tt4_measured_yes" name="tt4_measured" value="yes" required>
+                    <label for="tt4_measured_yes">Yes</label>
+                    <input type="radio" id="tt4_measured_no" name="tt4_measured" value="no" required>
+                    <label for="tt4_measured_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>T4U Measured:</label>
+                <div>
+                    <input type="radio" id="t4u_measured_yes" name="t4u_measured" value="yes" required>
+                    <label for="t4u_measured_yes">Yes</label>
+                    <input type="radio" id="t4u_measured_no" name="t4u_measured" value="no" required>
+                    <label for="t4u_measured_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>FTI Measured:</label>
+                <div>
+                    <input type="radio" id="fti_measured_yes" name="fti_measured" value="yes" required>
+                    <label for="fti_measured_yes">Yes</label>
+                    <input type="radio" id="fti_measured_no" name="fti_measured" value="no" required>
+                    <label for="fti_measured_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Referral Source:</label>
+                <div>
+                    <label>SVHC:</label>
+                    <div>
+                        <input type="radio" id="referral_source_SVHC_yes" name="referral_source_SVHC" value="yes" required>
+                        <label for="referral_source_SVHC_yes">Yes</label>
+                        <input type="radio" id="referral_source_SVHC_no" name="referral_source_SVHC" value="no" required>
+                        <label for="referral_source_SVHC_no">No</label>
+                    </div>
+                </div>
+                <div>
+                    <label>SVI:</label>
+                    <div>
+                        <input type="radio" id="referral_source_SVI_yes" name="referral_source_SVI" value="yes" required>
+                        <label for="referral_source_SVI_yes">Yes</label>
+                        <input type="radio" id="referral_source_SVI_no" name="referral_source_SVI" value="no" required>
+                        <label for="referral_source_SVI_no">No</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Other:</label>
+                    <div>
+                        <input type="radio" id="referral_source_other_yes" name="referral_source_other" value="yes" required>
+                        <label for="referral_source_other_yes">Yes</label>
+                        <input type="radio" id="referral_source_other_no" name="referral_source_other" value="no" required>
+                        <label for="referral_source_other_no">No</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/predict',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        let resultColor = response.prediction === 'Positive' ? 'blue' : 'red';
+                        $('#result').html('<h2 style="color: ' + resultColor + ';">Prediction: ' + response.prediction + '</h2>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
